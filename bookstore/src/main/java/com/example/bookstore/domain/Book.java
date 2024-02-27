@@ -1,8 +1,5 @@
 package com.example.bookstore.domain;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
@@ -13,6 +10,9 @@ public class Book {
     private String author;
     private String isbn;
     private String price;
+    @ManyToOne
+    @JoinColumn(name="categoryid")
+    private Category category;
     public Long getId() {
         return id;
     }
@@ -40,12 +40,20 @@ public class Book {
     public void setPrice(String price) {
         this.price = price;
     }
+    public Category getCategory() {
+        return category;
+    }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
     public Book() {}
-    public Book(String title, String author, String isbn, String price) {
+    public Book(String title, String author, String isbn, String price, Category category) {
+        super();
         this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.price = price;
+        this.category = category;
     }
     @Override
     public String toString() {

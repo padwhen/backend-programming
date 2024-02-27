@@ -12,6 +12,7 @@
       <th>Author</th>
       <th>ISBN</th>
       <th>Price</th>
+      <th>Category</th>
       <th>Delete</th>
       <th>Edit</th>
     </tr>
@@ -20,6 +21,7 @@
       <td th:text="${book.author}" />
       <td th:text="${book.isbn}" />
       <td th:text="${book.price}" />
+      <td th:text="${book.category}" />
       <td>
         <a class="btn btn-success" th:href="@{/delete/{id}(id=${book.id})}">Delete</a>
       </td>
