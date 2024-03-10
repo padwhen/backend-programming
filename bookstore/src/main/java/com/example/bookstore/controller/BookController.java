@@ -74,4 +74,8 @@ public class BookController {
                 return "error";
             }
         }
+        @RequestMapping(value="/login")
+        public String login() {
+            return "login";
+        }
 }
