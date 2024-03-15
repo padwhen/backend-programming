@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private AppUserRepository repository;
     @RequestMapping(value = "signup")
-    public String addStudent(Model model) {
+    public String addUser(Model model) {
         model.addAttribute("signupform", new SignupForm());
         return "signup";
     }

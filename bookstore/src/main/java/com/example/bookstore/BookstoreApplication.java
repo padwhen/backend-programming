@@ -1,9 +1,6 @@
 package com.example.bookstore;
 
-import com.example.bookstore.domain.Book;
-import com.example.bookstore.domain.BookRepository;
-import com.example.bookstore.domain.Category;
-import com.example.bookstore.domain.CategoryRepository;
+import com.example.bookstore.domain.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +12,7 @@ public class BookstoreApplication {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRepository) {
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository categoryRepository, AppUserRepository userRepository) {
 		return (args) -> {
 			Category c1 = new Category("Fiction");
 			Category c2 = new Category("Non-fiction");
@@ -27,7 +24,10 @@ public class BookstoreApplication {
 			repository.save(b1);
 			repository.save(b2);
 			repository.save(b3);
-
+			AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			AppUser user2 = new AppUser("admin", "$2a$08$bCCcGjB03eulCWt3CY0AZew2rVzXFyouUolL5dkL/pBgFkUH9O4J2", "ADMIN");
+			userRepository.save(user1);
+			userRepository.save(user2);
 		};
 	}
 }
